@@ -1,0 +1,137 @@
+/* =========================
+   BASE STYLES
+========================= */
+.home-container {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 40px;
+  background-color: #ffffff;
+}
+
+.home-content {
+  max-width: 520px;
+}
+
+.home-heading {
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: #1f2933;
+  margin-bottom: 16px;
+}
+
+.home-description {
+  font-size: 1rem;
+  color: #475569;
+  line-height: 1.6;
+  margin-bottom: 22px;
+}
+
+.shop-now-button {
+  background-color: #2563eb;
+  color: #ffffff;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.shop-now-button:hover {
+  background-color: #1e40af;
+}
+
+/* =========================
+   IMAGES (DEFAULT: HIDDEN)
+========================= */
+.home-desktop-img {
+  display: none;
+  max-width: 520px;
+}
+
+.home-mobile-img {
+  display: none;
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+/* =========================
+   SMALL DEVICES (≤576px)
+========================= */
+@media (max-width: 576px) {
+  .home-container {
+    flex-direction: column;
+    text-align: center;
+    padding: 24px 20px;
+  }
+
+  .home-heading {
+    font-size: 1.8rem;
+  }
+
+  .home-mobile-img {
+    display: block;
+    max-width: 300px;
+  }
+
+  .home-desktop-img {
+    display: none;
+  }
+
+  .shop-now-button {
+    width: 100%;
+  }
+}
+
+/* =========================
+   MEDIUM DEVICES (577px–992px)
+========================= */
+@media (min-width: 577px) and (max-width: 992px) {
+  .home-container {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 32px 40px;
+  }
+
+  .home-content {
+    max-width: 480px;
+  }
+
+  .home-desktop-img {
+    display: block;
+    min-width: 300px;
+  }
+
+  .home-mobile-img {
+    display: none;
+  }
+}
+
+/* =========================
+   LARGE & EXTRA LARGE (≥993px)
+========================= */
+@media (min-width: 993px) {
+  .home-container {
+    flex-direction: row;
+    text-align: flex-start;
+    align-items: center;
+    justify-content: space-between;
+    padding: 70px 100px;
+  }
+
+  .home-content {
+    max-width: 600px;
+  }
+
+  .home-mobile-img {
+    display: none;
+   
+  }
+
+  .home-desktop-img {
+    display: block;
+     max-width: 320px;
+  }
+}

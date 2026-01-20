@@ -1,0 +1,107 @@
+/* ===== PAGE BACKGROUND ===== */
+.register-page {
+  min-height: 100vh;
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.55),
+      rgba(0, 0, 0, 0.55)
+    ),
+    url("https://imgs.search.brave.com/H94oJyhIdp_w84cBTuPw6tnuapKYqaIFamUynaT2x34/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTgy/Mjg4OTA4Mi92ZWN0/b3IvbHV4dXJ5LWJh/Y2tncm91bmQtY3Vy/dmVkLXNoYXBlcy1s/aW5lcy1saWdodHMt/YW5kLXNoYWRvd3Mu/anBnP3M9NjEyeDYx/MiZ3PTAmaz0yMCZj/PWpmTXNQRGFKSVRl/NzJIeVg2dzJxUVA3/eVQ4ck5KUWxMNHRV/RVlwdHRNTUk9")
+      center/cover no-repeat;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* ===== CARD ===== */
+.register-card {
+  width: 100%;
+  max-width: 420px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(14px);
+  border-radius: 16px;
+  padding: 32px;
+  color: #ffffff;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+
+.register-card h2 {
+  text-align: center;
+  margin-bottom: 6px;
+  font-weight: 700;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #e5e7eb;
+  margin-bottom: 24px;
+}
+
+/* ===== FORM ===== */
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.85rem;
+  margin-bottom: 6px;
+  color: #f3f4f6;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-size: 0.9rem;
+}
+
+.form-group input:focus {
+  box-shadow: 0 0 0 2px #3b82f6;
+}
+
+/* ===== BUTTON ===== */
+.register-btn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: #ffffff;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.register-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.4);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 480px) {
+  .register-card {
+    padding: 24px;
+  }
+}
+.footer-text {
+  margin-top: 14px;
+  font-size: 0.85rem;
+  text-align: center;
+  color: #e5e7eb;
+}
+
+.footer-text span {
+  color: #60a5fa;
+  cursor: pointer;
+  font-weight: 600;
+}
+.link-item {
+  text-decoration: none;
+}

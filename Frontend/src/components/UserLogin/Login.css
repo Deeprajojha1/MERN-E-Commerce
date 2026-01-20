@@ -1,0 +1,112 @@
+/* ===== PAGE BACKGROUND ===== */
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.55),
+      rgba(0, 0, 0, 0.55)
+    ),
+    url("https://imgs.search.brave.com/ccUmPAOiClVYIYaEIHhakgNQFaaD51BX-EEnEhp7m-E/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3N5c3RlbS9y/ZXNvdXJjZXMvdGh1/bWJuYWlscy8wMDEv/OTY4LzYwMS9zbWFs/bC9ibGFjay1kYXJr/LWVsZWdhbnQtc2Vh/bWxlc3MtcGF0dGVy/bi1pbi1yZXRyby1z/dHlsZS13aXRoLWEt/Z29sZGVuLWxpbmUt/YmFja2dyb3VuZC1m/b3ItaW52aXRhdGlv/bi1jYXJkLXlvdS1j/YW4tdXNlZC1mb3It/cHJlbWl1bS1yb3lh/bC1wYXJ0eS1sdXh1/cnktcG9zdGVyLWJn/LXRlbXBsYXRlLXdp/dGgtdmludGFnZS1s/ZWF0aGVyLXRleHR1/cmUtdmVjdG9yLmpw/Zw")
+      center / cover no-repeat;
+}
+
+/* ===== LOGIN CARD ===== */
+.login-card {
+  width: 100%;
+  max-width: 380px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(14px);
+  border-radius: 16px;
+  padding: 32px 28px;
+  color: #ffffff;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+
+/* ===== HEADING ===== */
+.login-card h2 {
+  text-align: center;
+  margin-bottom: 6px;
+  font-weight: 700;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #e5e7eb;
+  margin-bottom: 24px;
+}
+
+/* ===== FORM ===== */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input-group label {
+  font-size: 0.85rem;
+  color: #e5e7eb;
+}
+
+.input-group input {
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 0.9rem;
+}
+
+.input-group input:focus {
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.7);
+}
+
+/* ===== BUTTON ===== */
+.login-btn {
+  margin-top: 10px;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: #3b82f6;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+
+.login-btn:hover {
+  background: #2563eb;
+}
+
+/* ===== FOOTER TEXT ===== */
+.footer-text {
+  margin-top: 14px;
+  font-size: 0.85rem;
+  text-align: center;
+  color: #e5e7eb;
+}
+
+.footer-text span {
+  color: #60a5fa;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 480px) {
+  .login-card {
+    margin: 0 16px;
+    padding: 26px 20px;
+  }
+}
+.link-item{
+    text-decoration: none;
+}

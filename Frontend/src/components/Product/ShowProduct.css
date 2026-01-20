@@ -1,0 +1,290 @@
+/* =========================
+   PAGE WRAPPER
+========================= */
+.show-product-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+  width: 100%;
+  position: relative;
+}
+
+/* =========================
+   CATEGORY SIDEBAR (PRO)
+========================= */
+.category-container {
+  flex: 0 0 260px;
+  background: #ffffff;
+  padding: 1.25rem;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Sticky only on desktop */
+@media (min-width: 992px) {
+  .category-container {
+    position: sticky;
+    top: 90px;
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+  }
+}
+
+/* Category item */
+.category-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem 0.9rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #374151;
+  transition: all 0.2s ease;
+}
+
+.category-item:hover {
+  background: #f3f4f6;
+}
+
+.category-item input {
+  accent-color: #2563eb;
+}
+
+/* =========================
+   CONTENT AREA
+========================= */
+.content-container {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================
+   SEARCH BAR (CENTERED)
+========================= */
+.search-bar-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.search-box {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 0.8rem 1rem 0.8rem 2.6rem;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  font-size: 0.95rem;
+}
+
+.search-box input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+}
+
+/* =========================
+   PRODUCT GRID (AMAZON STYLE)
+========================= */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+/* =========================
+   PRODUCT CARD
+   ❗ SAME AS YOUR CSS (UNCHANGED)
+========================= */
+.product-card {
+  background: #ffffff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* IMAGE */
+.image-wrapper {
+  position: relative;
+  padding-top: 100%;
+  background: #f8fafc;
+  overflow: hidden;
+}
+
+.image-wrapper img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover img {
+  transform: scale(1.05);
+}
+
+/* RATING */
+.rating-badge {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #f59e0b;
+}
+
+/* INFO */
+.product-info {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.brand {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: #6b7280;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0.4rem 0;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 2.8em;
+}
+
+.price-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0.5rem 0;
+}
+
+.price {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.mrp {
+  font-size: 0.9rem;
+  color: #9ca3af;
+  text-decoration: line-through;
+}
+
+.stock {
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  width: fit-content;
+  margin-bottom: 0.8rem;
+}
+
+.stock.in {
+  background: #ecfdf5;
+  color: #059669;
+}
+
+.stock.out {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+/* BUTTON */
+.add-to-cart,
+.btn-primary {
+  margin-top: auto;
+  padding: 0.75rem;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+/* =========================
+   LOADER / STATUS
+========================= */
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+}
+
+.status-message {
+  text-align: center;
+  padding: 3rem 1rem;
+  font-size: 1.1rem;
+}
+
+/* =========================
+   RESPONSIVE BREAKPOINTS
+========================= */
+
+/* Tablet */
+@media (max-width: 991px) {
+  .show-product-container {
+    flex-direction: column;
+  }
+
+  .category-container {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .category-item {
+    flex: 1 1 auto;
+    justify-content: center;
+  }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .search-box {
+    max-width: 100%;
+  }
+}

@@ -1,0 +1,99 @@
+/* Wrapper */
+.related-products {
+  margin-top: 60px;
+  padding: 0 10px;
+}
+
+.related-heading {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #111827;
+}
+
+/* Grid */
+.related-products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+/* Card */
+.related-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.related-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+}
+
+/* Image */
+.related-img {
+  width: 100%;
+  height: 180px;
+  background: #f9fafb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.related-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Info */
+.related-info {
+  padding: 12px;
+  text-align: center;
+}
+
+.related-info h6 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.related-info .price {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #2563eb;
+}
+
+/* States */
+.related-no-products,
+.related-error {
+  text-align: center;
+  color: #6b7280;
+  font-size: 0.95rem;
+  padding: 20px 0;
+}
+
+/* Loader */
+.loader-container {
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .related-products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .related-img {
+    height: 140px;
+  }
+}

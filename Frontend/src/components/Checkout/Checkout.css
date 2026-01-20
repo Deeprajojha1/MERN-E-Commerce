@@ -1,0 +1,126 @@
+/* PAGE */
+.checkout-page {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+  background: #f9fafb;
+  min-height: 100vh;
+}
+
+/* TITLE */
+.checkout-main-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* LAYOUT */
+.checkout-wrapper {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+/* LEFT */
+.checkout-left {
+  flex: 2;
+}
+
+/* RIGHT */
+.checkout-right {
+  flex: 1;
+}
+
+/* ADDRESS TITLE */
+.checkout-title {
+  font-size: 1.4rem;
+  margin-bottom: 12px;
+}
+
+/* ADDRESS CARD */
+.address-card {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+/* HEADER */
+.address-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.address-header .icon {
+  color: #2563eb;
+  font-size: 1.4rem;
+}
+
+.address-header h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* TEXT */
+.address-text {
+  font-size: 0.95rem;
+  color: #374151;
+  margin-bottom: 6px;
+}
+
+/* PHONE */
+.phone-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 12px 0;
+  font-weight: 500;
+}
+
+/* BUTTON */
+.confirm-btn-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.confirm-btn {
+  width: 80%;
+  padding: 12px;
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.confirm-btn:hover {
+  background: #1e40af;
+}
+
+/* NO ADDRESS */
+.no-address {
+  text-align: center;
+  color: #6b7280;
+  margin-top: 40px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 992px) {
+  .checkout-wrapper {
+    flex-direction: column;
+  }
+
+  .checkout-left,
+  .checkout-right {
+    width: 100%;
+  }
+}

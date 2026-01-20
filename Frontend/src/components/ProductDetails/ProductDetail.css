@@ -1,0 +1,254 @@
+/* =========================
+   Page Wrapper
+========================= */
+.product-detail-container {
+  padding: 24px;
+  display: flex;
+  justify-content: center;
+  min-height: 80vh;
+  background-color: #f9fafb;
+}
+
+/* =========================
+   Card Layout
+========================= */
+.product-detail-card {
+  width: 100%;
+  max-width: 1100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  background-color: #ffffff; /* 🔑 cleaned */
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* =========================
+   Image Section
+========================= */
+.product-image-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f3f4f6;
+  border-radius: 14px;
+  padding: 24px;
+}
+
+.product-image-section img {
+  width: 100%;
+  max-height: 420px;
+  object-fit: contain;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.product-image-section:hover img {
+  transform: scale(1.03);
+}
+
+/* =========================
+   Info Section
+========================= */
+.product-info-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-info-section h2 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+.product-info-section p {
+  font-size: 0.9rem;
+  color: #374151;
+  margin-bottom: 6px;
+}
+
+.description {
+  font-size: 0.95rem;
+  color: #6b7280;
+  line-height: 1.7;
+  margin: 12px 0 16px;
+}
+
+/* =========================
+   Meta Info Grid (NEW)
+========================= */
+.meta-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px 20px;
+  font-size: 0.85rem;
+  color: #374151;
+  margin-bottom: 16px;
+}
+
+/* =========================
+   Price Section
+========================= */
+.price {
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: #16a34a;
+  margin: 10px 0;
+}
+
+.discount {
+  font-size: 0.95rem;
+  color: #9ca3af;
+  text-decoration: line-through;
+  margin-left: 10px;
+}
+
+/* =========================
+   Rating & Stock
+========================= */
+.rating {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #f59e0b;
+  margin-bottom: 8px;
+}
+
+.stock {
+  font-size: 0.85rem;
+  font-weight: 600;
+  width: fit-content;
+  padding: 4px 10px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+}
+
+.stock.in {
+  background-color: #ecfdf5;
+  color: #059669;
+}
+
+.stock.out {
+  background-color: #fef2f2;
+  color: #dc2626;
+}
+
+/* =========================
+   Buttons
+========================= */
+.buttons {
+  display: flex;
+  gap: 14px;
+  margin-top: auto;
+}
+
+/* Buy Now */
+.btn-buy-now {
+  flex: 1;
+  padding: 14px;
+  border-radius: 10px;
+  border: none;
+  background-color: #16a34a;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.btn-buy-now:hover {
+  background-color: #15803d;
+}
+
+/* Add to Cart */
+.btn-add-cart {
+  flex: 1;
+  padding: 14px;
+  border-radius: 10px;
+  border: 2px solid #2563eb;
+  background-color: #ffffff;
+  color: #2563eb;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.btn-add-cart:hover {
+  background-color: #2563eb;
+  color: #ffffff;
+}
+
+/* Click feedback */
+.btn-buy-now:active,
+.btn-add-cart:active {
+  transform: scale(0.97);
+}
+
+/* =========================
+   Loader & Error
+========================= */
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+}
+
+.error {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #dc2626;
+  text-align: center;
+}
+
+/* =========================
+   RESPONSIVE BREAKPOINTS
+========================= */
+
+/* Mobile */
+@media (max-width: 576px) {
+  .product-detail-card {
+    grid-template-columns: 1fr;
+    padding: 16px;
+  }
+
+  .product-info-section h2 {
+    font-size: 1.4rem;
+  }
+
+  .price {
+    font-size: 1.4rem;
+  }
+
+  .buttons {
+    flex-direction: column;
+  }
+}
+
+/* Tablets */
+@media (min-width: 577px) and (max-width: 768px) {
+  .product-detail-card {
+    grid-template-columns: 1fr;
+  }
+
+  .product-image-section img {
+    max-height: 320px;
+  }
+}
+
+/* Laptops */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .product-detail-card {
+    gap: 24px;
+    padding: 24px;
+  }
+}
+
+/* Desktops */
+@media (min-width: 1025px) {
+  .product-detail-card {
+    padding: 32px;
+  }
+}

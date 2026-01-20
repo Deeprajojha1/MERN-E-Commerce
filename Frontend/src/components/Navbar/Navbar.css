@@ -1,0 +1,166 @@
+/* NAVBAR BASE */
+.nav {
+  width: 100%;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* NAV BAR */
+.nav_bar {
+  width: 100%;
+  padding: 14px 24px;
+
+  display: flex;
+  align-items: center;
+}
+
+/* LEFT (LOGO) */
+.left {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.left h3 {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #2563eb;
+}
+
+.left span {
+  color: #111827;
+}
+
+/* RIGHT (DESKTOP MENU) */
+.right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  margin-left: auto; /* 🔥 THIS pushes menu to extreme right */
+}
+
+/* BUTTONS */
+.nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+
+  font-size: 0.85rem;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.nav-btn.primary {
+  background: #2563eb;
+  color: #ffffff;
+  border-color: #2563eb;
+}
+
+/* MENU TOGGLE */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+
+  margin-left: auto; /* 🔥 icon extreme right */
+}
+
+/* MOBILE MENU */
+.mobile-menu {
+  display: none;
+  gap: 10px;
+  padding: 12px 16px;
+  overflow-x: auto;
+  white-space: nowrap;
+  border-top: 1px solid #e5e7eb;
+}
+
+.mobile-menu.open {
+  display: flex;
+  border-top: 0px solid #e5e7eb;
+ 
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .desktop-menu {
+    display: none;
+  }
+  .menu-toggle {
+    display: block;
+  }
+}
+
+@media (min-width: 993px) {
+  .mobile-menu {
+    display: none;
+  }
+}
+.link-item{
+  text-decoration: none;
+}
+.cart-wrapper {
+  position: relative;          /* 🔑 important */
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+
+  font-weight: 600;
+  color: #111827;
+}
+
+/* Cart Icon */
+.cart-icon {
+  font-size: 18px;
+}
+
+/* 🔴 CART COUNT BADGE */
+.cart-badge {
+  position: absolute;
+
+  /* 👉 border ke bahar */
+  top: -6px;
+  right: -6px;
+
+  min-width: 22px;
+  height: 22px;
+
+  background: #ef4444;
+  color: #ffffff;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 999px;
+
+  /* 👌 nice look */
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+.cart-text {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
