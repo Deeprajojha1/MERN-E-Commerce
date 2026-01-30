@@ -25,8 +25,11 @@ const STATUS = {
   ERROR: "error",
 };
 
+// same error image (previous one)
+const errorImage =
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoce2ALrTr4EXqiE0iG0A8A_QldgR6q6T6jQ&s";
+
 const ShowProduct = () => {
-  // ✅ addToCart context se liya (NO logic change)
   const { products = [], addToCart } = useContext(AppContext);
   console.log("Products from context:", products);
 
@@ -37,6 +40,7 @@ const ShowProduct = () => {
   useEffect(() => {
     setStatus(STATUS.LOADING);
     setSearch("");
+
     if (products.length > 0) {
       setStatus(STATUS.SUCCESS);
     } else {
@@ -44,15 +48,14 @@ const ShowProduct = () => {
     }
   }, [products, selectedCategory]);
 
-  // 🔍 FILTER LOGIC (UNCHANGED)
+  //  FILTER LOGIC (UNCHANGED)
   const filteredProducts = products.filter((product) => {
     const matchSearch = product.title
       ?.toLowerCase()
       .includes(search.toLowerCase());
 
     const matchCategory =
-      selectedCategory === "All" ||
-      product.category === selectedCategory;
+      selectedCategory === "All" || product.category === selectedCategory;
 
     return matchSearch && matchCategory;
   });
@@ -69,21 +72,23 @@ const ShowProduct = () => {
       case STATUS.ERROR:
         return (
           <div className="status-message error">
-            No products found
+            <img src={errorImage} alt="No Products" className="error-img" />
+            <h3>No products found</h3>
+            <p>Please try again later </p>
           </div>
         );
 
       case STATUS.SUCCESS:
         return (
           <div className="show-product-container">
-
             {/* CATEGORY SIDEBAR */}
             <aside className="category-container">
               {categories.map((cat, i) => (
                 <label
                   key={i}
-                  className={`category-item ${selectedCategory === cat ? "active" : ""
-                    }`}
+                  className={`category-item ${
+                    selectedCategory === cat ? "active" : ""
+                  }`}
                 >
                   <input
                     type="radio"
@@ -98,7 +103,6 @@ const ShowProduct = () => {
 
             {/* CONTENT */}
             <section className="content-container">
-
               {/* SEARCH */}
               <div className="search-bar-container">
                 <div className="search-box">
@@ -120,16 +124,12 @@ const ShowProduct = () => {
                     key={product.product_id}
                   >
                     <div className="product-card">
-
                       {/* IMAGE */}
                       <Link
                         to={`/product/${product.product_id}`}
                         className="image-wrapper"
                       >
-                        <img
-                          src={product.image_url}
-                          alt={product.title}
-                        />
+                        <img src={product.image_url} alt={product.title} />
                         {product.rating > 0 && (
                           <span className="rating-badge">
                             ⭐ {product.rating}
@@ -139,16 +139,12 @@ const ShowProduct = () => {
 
                       {/* INFO */}
                       <div className="product-info">
-                        <span className="brand">
-                          {product.product_name}
-                        </span>
+                        <span className="brand">{product.product_name}</span>
 
                         <h6 className="title">{product.title}</h6>
 
                         <div className="price-row">
-                          <span className="price">
-                            ₹{product.price}
-                          </span>
+                          <span className="price">₹{product.price}</span>
 
                           {product.discount_price && (
                             <span className="mrp">
@@ -158,21 +154,20 @@ const ShowProduct = () => {
                         </div>
 
                         <span
-                          className={`stock ${product.availability === "In Stock"
-                            ? "in"
-                            : "out"
-                            }`}
+                          className={`stock ${
+                            product.availability === "In Stock" ? "in" : "out"
+                          }`}
                         >
                           {product.availability}
                         </span>
 
-                        {/* ✅ ADD TO CART USING CONTEXT */}
+                        {/*  ADD TO CART */}
                         <button
                           className="btn btn-primary w-100"
                           onClick={() =>
                             addToCart({
-                              productId: product._id,          // ✅ Mongo ObjectId
-                              product_id: product.product_id,  // CL001
+                              productId: product._id,
+                              product_id: product.product_id,
 
                               qty: 1,
                               title: product.title,
@@ -194,8 +189,6 @@ const ShowProduct = () => {
                               warranty: product.warranty,
                             })
                           }
-
-
                         >
                           Add to Cart
                         </button>
@@ -205,9 +198,16 @@ const ShowProduct = () => {
                 ))}
               </div>
 
+              {/*  No matching products (Search / Category) */}
               {filteredProducts.length === 0 && (
                 <div className="status-message">
-                  No matching products
+                  <img
+                    src={errorImage}
+                    alt="No Matching Products"
+                    className="error-img"
+                  />
+                  <h3>No matching products</h3>
+                  <p>Try searching something else </p>
                 </div>
               )}
             </section>
@@ -222,9 +222,7 @@ const ShowProduct = () => {
   return (
     <>
       <Navbar />
-      <div className="container mt-4">
-        {renderContent()}
-      </div>
+      <div className="container mt-4">{renderContent()}</div>
     </>
   );
 };

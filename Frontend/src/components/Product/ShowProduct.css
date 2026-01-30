@@ -288,3 +288,9 @@
     max-width: 100%;
   }
 }
+.error-img {
+  width: 220px;
+  max-width: 90%;
+  margin: 10px auto 15px auto;
+  display: block;
+}

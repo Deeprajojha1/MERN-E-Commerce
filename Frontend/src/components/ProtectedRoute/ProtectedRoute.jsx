@@ -8,10 +8,10 @@ import "./ProtectedRoute.css";
 const ProtectedRoute = () => {
   const location = useLocation();
 
-  // ✅ from AppContext (localStorage-based token)
+  //  from AppContext (localStorage-based token)
   const { token, isLoading } = useContext(AppContext);
  console.log("ProtectedRoute token:", token);
-  // ⏳ Loader while checking auth
+  //  Loader while checking auth
   if (isLoading) {
     return (
       <div className="protected-loader">
@@ -27,7 +27,7 @@ const ProtectedRoute = () => {
     );
   }
 
-  // ❌ Not authenticated
+  // Not authenticated
   if (!token) {
     return (
       <Navigate
@@ -38,7 +38,7 @@ const ProtectedRoute = () => {
     );
   }
 
-  // ✅ Authenticated
+  //  Authenticated
   return <Outlet />;
 };
 

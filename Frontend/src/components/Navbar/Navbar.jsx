@@ -22,11 +22,11 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
 
-  // ✅ TOKEN FROM CONTEXT (LOCALSTORAGE BASED)
+  //  TOKEN FROM CONTEXT (LOCALSTORAGE BASED)
   const { token, cart } = useContext(AppContext);
   const isAuthenticated = Boolean(token);
 
-  // 🔥 LOGOUT (Mobile)
+  //  LOGOUT (Mobile)
   const logoutOut = () => {
     // ❌ remove token from localStorage
     localStorage.removeItem("token");
@@ -45,9 +45,9 @@ const Navbar = () => {
     }, 1550);
   };
 
-  // 🔥 LOGOUT (Desktop)
+  //  LOGOUT (Desktop)
   const logoutOutDestop = () => {
-    // ❌ remove token from localStorage
+    //  remove token from localStorage
     localStorage.removeItem("token");
 
     toast.success("👋 Logged out successfully", {

@@ -17,7 +17,7 @@ const STATUS = {
 
 const ProductDetail = () => {
   const { product_id } = useParams();
-  const { addToCart,cart } = useContext(AppContext); // ✅ CONTEXT
+  const { addToCart,cart,url } = useContext(AppContext); //  CONTEXT
   const [product, setProduct] = useState(null);
   const [status, setStatus] = useState(STATUS.INITIAL);
   const navigate = useNavigate();
@@ -27,7 +27,7 @@ const ProductDetail = () => {
       setStatus(STATUS.LOADING);
       try {
         const res = await axios.get(
-          `http://localhost:8000/api/products/product/${product_id}`,
+          `${url}/products/product/${product_id}`,
           {
             headers: { "Content-Type": "application/json" },
           }

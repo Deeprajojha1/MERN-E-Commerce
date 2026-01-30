@@ -4,9 +4,11 @@ import { useNavigate, Link } from "react-router-dom";
 import { ToastContainer, toast, Bounce } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Register.css";
-
+import AppContext from "../../Context/AppContext";
+import { useContext } from "react";
 const Register = () => {
   const navigate = useNavigate();
+  const {url}=useContext(AppContext)
 
   const [formData, setFormData] = useState({
     name: "",
@@ -39,7 +41,7 @@ const Register = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/users/register",
+        `${url}/users/register`,
         formData,
         {
           headers: {

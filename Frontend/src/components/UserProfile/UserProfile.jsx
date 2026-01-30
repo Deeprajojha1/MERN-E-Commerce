@@ -4,8 +4,9 @@ import axios from "axios";
 import { ThreeDots } from "react-loader-spinner";
 import { FaArrowLeft } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import AppContext from "../../Context/AppContext";
+import { useContext } from "react";
 import "./UserProfile.css";
-
 const STATUS = {
   INITIAL: "initial",
   LOADING: "loading",
@@ -17,6 +18,7 @@ const UserProfile = () => {
   const [status, setStatus] = useState(STATUS.INITIAL);
   const [profile, setProfile] = useState(null);
   const navigate = useNavigate();
+  const { url } = useContext(AppContext);
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -24,9 +26,10 @@ const UserProfile = () => {
         setStatus(STATUS.LOADING);
 
         const token = localStorage.getItem("token");
-
+        console.log(url)
+       console.log('http://localhost:8000/api/users/profile')
         const res = await axios.get(
-          "http://localhost:8000/api/users/profile",
+          `${url}/users/profile`,
           {
             headers: {
               "Content-Type": "application/json",

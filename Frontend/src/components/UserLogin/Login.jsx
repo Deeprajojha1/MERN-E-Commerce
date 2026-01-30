@@ -4,12 +4,15 @@ import axios from "axios";
 import { ToastContainer, toast, Bounce } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Login.css";
+import AppContext from "../../Context/AppContext";
+import { useContext } from "react";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const {url}=useContext(AppContext)
 
   //  SAME LOGIC, ONLY STORAGE CHANGE
   const handleSubmit = async (e) => {
@@ -18,7 +21,7 @@ const Login = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:8000/api/users/login",
+       `${url}/users/login`,
         { email, password },
         {
           headers: {
@@ -34,7 +37,7 @@ const Login = () => {
           transition: Bounce,
           onClose: () => navigate("/")
         });
-
+       console.log(res.data.token)
         localStorage.setItem("token", res.data.token);
       }
 

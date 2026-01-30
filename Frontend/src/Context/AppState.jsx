@@ -9,23 +9,25 @@ export const AppState = (props) => {
   const [addresses, setAddresses] = useState([]);
   const [cart, setCart] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [userId, setUserId] = useState("");
+  const [totalAmount, setTotalAmount] = useState(0);
 
   // TOKEN FROM localStorage
   const token = localStorage.getItem("token");
+
+  //  Your defined URL
+  const url = "http://localhost:8000/api";
 
   /* ===================== FETCH PRODUCTS ===================== */
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await axios.get(
-          "http://localhost:8000/api/products/all",
-          { headers: { "Content-Type": "application/json" } }
-        );
+        const res = await axios.get(`${url}/products/all`, {
+          headers: { "Content-Type": "application/json" },
+        });
 
         const productArray = res.data?.[0]?.products;
         setProducts(Array.isArray(productArray) ? productArray : []);
-        // 🔕 Optional toast (commented to avoid spam)
-        // toast.success("✅ Products loaded", { autoClose: 1500, transition: Bounce });
       } catch (error) {
         console.error("Product fetch error:", error);
         setProducts([]);
@@ -37,6 +39,24 @@ export const AppState = (props) => {
     fetchProducts();
   }, []);
 
+  /* ===================== GET USER ID FROM TOKEN ===================== */
+  useEffect(() => {
+    if (!token) {
+      setUserId("");
+      setCart([]);
+      return;
+    }
+
+    try {
+      const decoded = JSON.parse(atob(token.split(".")[1]));
+      setUserId(decoded.userId);
+    } catch (err) {
+      console.error("Token decode error:", err);
+      setUserId("");
+      setCart([]);
+    }
+  }, [token]);
+
   /* ===================== FETCH CART ===================== */
   useEffect(() => {
     if (!token) {
@@ -44,31 +64,20 @@ export const AppState = (props) => {
       return;
     }
 
-    let userId;
-    try {
-      const decoded = JSON.parse(atob(token.split(".")[1]));
-      userId = decoded.userId;
-    } catch (err) {
-      console.error("Token decode error:", err);
-      setCart([]);
+    if (!userId) {
       return;
     }
 
     const fetchCart = async () => {
       try {
-        const res = await axios.get(
-          `http://localhost:8000/api/cart/user/${userId}`,
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const res = await axios.get(`${url}/cart/user/${userId}`, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
 
         setCart(res.data?.items || []);
-        // 🔕 Optional toast
-        // toast.success("🛒 Cart loaded", { autoClose: 1500, transition: Bounce });
       } catch (error) {
         console.error("Cart fetch error:", error);
         setCart([]);
@@ -76,7 +85,7 @@ export const AppState = (props) => {
     };
 
     fetchCart();
-  }, [token]);
+  }, [token, userId]);
 
   /* ===================== FETCH ADDRESSES ===================== */
   useEffect(() => {
@@ -87,15 +96,12 @@ export const AppState = (props) => {
 
     const fetchAddresses = async () => {
       try {
-        const res = await axios.get(
-          "http://localhost:8000/api/addresses/user-addresses",
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const res = await axios.get(`${url}/addresses/user-addresses`, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
 
         setAddresses(res.data);
         console.log("Fetched addresses:", res.data);
@@ -109,13 +115,25 @@ export const AppState = (props) => {
     fetchAddresses();
   }, [token]);
 
+  /* ===================== CALCULATE TOTAL AMOUNT ===================== */
+  useEffect(() => {
+    const calculateTotal = () => {
+      const total = cart.reduce((sum, item) => {
+        return sum + (parseFloat(item.price) * parseInt(item.qty));
+      }, 0);
+      setTotalAmount(total);
+    };
+
+    calculateTotal();
+  }, [cart]);
+
   /* ===================== ADD TO CART ===================== */
   const addToCart = async (item) => {
     if (!token) return;
 
     try {
       const res = await axios.post(
-        "http://localhost:8000/api/cart/add",
+        `${url}/cart/add`,
         {
           items: [
             {
@@ -162,7 +180,7 @@ export const AppState = (props) => {
 
     try {
       const res = await axios.post(
-        "http://localhost:8000/api/cart/decreaseQty",
+        `${url}/cart/decreaseQty`,
         { product_id, qty },
         {
           headers: {
@@ -189,7 +207,7 @@ export const AppState = (props) => {
 
     try {
       const res = await axios.post(
-        "http://localhost:8000/api/cart/increaseQty",
+        `${url}/cart/increaseQty`,
         { product_id, qty },
         {
           headers: {
@@ -215,15 +233,12 @@ export const AppState = (props) => {
     if (!token) return;
 
     try {
-      const res = await axios.delete(
-        `http://localhost:8000/api/cart/remove/${product_id}`,
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const res = await axios.delete(`${url}/cart/remove/${product_id}`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
       setCart(res.data.cart.items);
 
@@ -249,15 +264,12 @@ export const AppState = (props) => {
     }
 
     try {
-      await axios.delete(
-        `http://localhost:8000/api/cart/clear/${userId}`,
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      await axios.delete(`${url}/cart/clear/${userId}`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
       setCart([]);
 
@@ -275,16 +287,12 @@ export const AppState = (props) => {
     if (!token) return;
 
     try {
-      const res = await axios.post(
-        "http://localhost:8000/api/addresses/add-address",
-        addressData,
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const res = await axios.post(`${url}/addresses/add-address`, addressData, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
       setAddresses((prev) => [...prev, res.data.address]);
 
@@ -310,10 +318,14 @@ export const AppState = (props) => {
         isLoading,
         token,
         addToCart,
+        userId,
+        url, // ✅ kept your defined url in context
         decreaseQty,
         increaseQty,
         removeCart,
         clearCart,
+        totalAmount,
+        setTotalAmount,
         addAddress,
       }}
     >
