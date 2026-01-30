@@ -6,11 +6,11 @@ export const addToCart = async (req, res) => {
   const { items } = req.body;
 
   try {
-    let cart = await Cart.findOne({ userId: req.user.id });
+    let cart = await Cart.findOne({ userId:req.user._id });
 
     if (!cart) {
       cart = new Cart({
-        userId: req.user.id,
+        userId: req.user._id,
         items: [],
         totalItems: 0,
         totalAmount: 0,
@@ -91,7 +91,7 @@ export const addToCart = async (req, res) => {
 // get user cart
 export const getUserCart = async (req, res) => {
   try {
-    const cart = await Cart.findOne({ userId: req.user.id });
+    const cart = await Cart.findOne({ userId:req.user._id });
 
     if (!cart) {
       return res.status(404).json({ message: "Cart not found" });
@@ -110,7 +110,7 @@ export const removeProductFromCart = async (req, res) => {
   const { product_id } = req.params;
 
   try {
-    const cart = await Cart.findOne({ userId: req.user.id });
+    const cart = await Cart.findOne({ userId: req.user._id });
 
     if (!cart) {
       return res.status(404).json({ message: "Cart not found" });
@@ -143,7 +143,7 @@ export const removeProductFromCart = async (req, res) => {
 // Clear Cart Controller (to be implemented)
 export const clearCart = async (req, res) => {
   try {
-    const cart = await Cart.findOne({ userId: req.user.id });
+    const cart = await Cart.findOne({ userId: req.user._id });
 
     if (!cart) {
       return res.status(404).json({ message: "Cart not found" });
@@ -171,7 +171,7 @@ export const decreaseQuantity = async (req, res) => {
   const { product_id, qty } = req.body;
 
   try {
-    const cart = await Cart.findOne({ userId: req.user.id });
+    const cart = await Cart.findOne({ userId: req.user._id });
 
     if (!cart) {
       return res.status(404).json({ message: "Cart not found" });
@@ -214,7 +214,7 @@ export const increaseQuantity = async (req, res) => {
   const { product_id, qty } = req.body;
 
   try {
-    const cart = await Cart.findOne({ userId: req.user.id });
+    const cart = await Cart.findOne({ userId: req.user._id});
     if (!cart) {
       return res.status(404).json({ message: "Cart not found" });
     }

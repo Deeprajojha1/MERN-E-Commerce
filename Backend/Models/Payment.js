@@ -8,12 +8,42 @@ const orderSchema = new mongoose.Schema(
       required: true,
     },
 
+    // Store items
+    orderId: {
+      type: String
+    },
+    paymentId: {
+      type: String
+    },
+
+    orderItems: [
+      {
+        product_id: String,
+        title: String,
+        image_url: String,
+        price: Number,
+        qty: Number,
+      },
+    ],
+
+    // Optional: store shipping address
+    userShipping: {
+      fullname: String,
+      email: String,
+      phoneNumber: String,
+      address: String,
+      city: String,
+      state: String,
+      country: String,
+      pincode: String,
+    },
+
     razorpay_order_id: String,
     razorpay_payment_id: String,
     razorpay_signature: String,
 
     amount: Number,
-    currency: String,
+    currency: { type: String, default: "INR" },
 
     status: {
       type: String,

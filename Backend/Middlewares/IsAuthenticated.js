@@ -23,7 +23,10 @@ export const Authenticated = async (req, res, next) => {
         .json({ message: "Authorization denied, user not found" });
     }
 
-    req.user = { id: user._id };
+     req.user = {
+      _id: user._id,
+      id: user._id,
+    };
     next();
   } catch (error) {
     console.error("Token verification failed:", error);

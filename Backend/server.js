@@ -7,6 +7,7 @@ import userRoutes from './Routes/User.js';
 import productRoutes from './Routes/Product.js';
 import addToCartRoutes from './Routes/Cart.js';
 import addressRoutes from './Routes/Address.js';
+import paymentRouter from './Routes/payment.js';
 import dotenv from 'dotenv';
 dotenv.config({ path: './config/config.env' });
 
@@ -40,6 +41,8 @@ app.use('/api/users', userRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/cart', addToCartRoutes);
 app.use('/api/addresses', addressRoutes);
+// /payment router
+app.use('/api/payment',paymentRouter)
 
 // Start server
 app.listen(PORT, () => {

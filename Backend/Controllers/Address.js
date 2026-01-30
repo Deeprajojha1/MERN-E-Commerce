@@ -9,7 +9,7 @@ export const addAddress = async (req, res) => {
 
     try {
         const newAddress = new Address({
-            userId: req.user.id,
+            userId: req.user._id,
             fullname: fullname,
             phoneNumber: phoneNumber,
             address: address,
@@ -35,7 +35,7 @@ export const addAddress = async (req, res) => {
 
 // get addresses for a user (to be implemented)
 export const getUserAddresses = async (req, res) => {
-    const address= await Address.find({userId:req.user.id}).sort({createdAt:-1}).limit(1);
+    const address= await Address.find({userId:req.user._id}).sort({createdAt:-1}).limit(1);
     try{
         if(!address){
             return res.status(404).json({message:"No addresses found"});
